@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `notification_prefs` text DEFAULT '{"soulDrop":true,"requests":true,"reminders":true,"reconnect":true}' NOT NULL;
