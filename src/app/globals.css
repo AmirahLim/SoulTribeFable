@@ -1,0 +1,118 @@
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/nunito-sans/400.css";
+@import "@fontsource/nunito-sans/600.css";
+@import "@fontsource/nunito-sans/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Light theme is the launch theme; the `.dark` block keeps
+ * the app dark-mode ready without shipping the toggle yet (per requirements).
+ */
+:root {
+  --sand-50: 250 246 238;   /* page background cream */
+  --sand-100: 245 237 223;  /* soft sand */
+  --sand-200: 236 223 202;  /* card tint */
+  --sand-300: 222 203 172;  /* borders on sand */
+  --sand-400: 199 173 134;
+
+  --terracotta-300: 224 160 132;
+  --terracotta-400: 208 128 96;
+  --terracotta-500: 185 100 68;  /* primary */
+  --terracotta-600: 158 80 52;
+  --terracotta-700: 128 62 40;
+
+  --forest-400: 106 138 116;
+  --forest-500: 74 108 86;
+  --forest-600: 52 84 64;   /* deep forest */
+  --forest-700: 38 64 48;
+
+  --gold-400: 214 178 106;
+  --gold-500: 193 152 72;   /* sparing, special moments only */
+
+  --ink: 59 46 37;          /* warm near-black */
+  --ink-soft: 110 94 82;
+  --ink-faint: 158 142 128;
+
+  --surface: 255 252 246;
+  --surface-raised: 255 255 255;
+  --surface-sunken: 247 240 229;
+
+  --danger: 178 58 48;
+  --success: 74 124 89;
+}
+
+.dark {
+  --sand-50: 34 28 24;
+  --sand-100: 42 35 30;
+  --sand-200: 54 45 38;
+  --sand-300: 74 62 52;
+  --sand-400: 98 82 68;
+
+  --ink: 240 231 220;
+  --ink-soft: 196 182 168;
+  --ink-faint: 140 126 114;
+
+  --surface: 40 33 28;
+  --surface-raised: 50 42 36;
+  --surface-sunken: 30 25 21;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply bg-sand-50 text-ink font-sans;
+}
+
+/* Respect users who prefer reduced motion (WCAG). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility for keyboard users. */
+:focus-visible {
+  outline: 2px solid rgb(var(--terracotta-500));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skeleton shimmer base. */
+.skeleton {
+  @apply rounded-xl bg-sand-200/70;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0,
+    rgb(255 255 255 / 0.45) 40px,
+    transparent 80px
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Hide scrollbars for horizontal chip rows while keeping scrollability. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Botanical accent: a soft organic blob used behind hero sections. */
+.organic-blob {
+  border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+}
